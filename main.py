@@ -7,6 +7,7 @@ def start(update: Update, context):
      keyboard = [
     ['MILLIY TAOMLAR 🍽️', 'YAXNA ICHIMLIKLAR 🥤'],
     ['ALKOGOL MAXSULOTLARI 🍷'],
+    ['DESERT']
 ]
     
   
@@ -58,6 +59,79 @@ def aroq(update: Update, context):
 
 
 
+
+
+def desert(update: Update, context):
+    keyboard = [
+        ['🍫 CHOCOLATE CAKE'],
+        ['🍯 BAKLAVA', '🍯 MEDOVIK'],
+        ['🥐 NAPALYON', '🍎 APPLE PIE'],
+    ]
+    reply_markup = ReplyKeyboardMarkup(keyboard)
+    
+    update.message.reply_text(
+        'ILtimos buyurtma berish uchun maxsulot ustiga bosing:',
+        reply_markup=reply_markup
+    )
+def chocolate(update: Update, context):
+    update.message.reply_text(
+        "🍫 Shokoladli tort\n"
+        "🍰 Nomi: Shokoladli tort\n"
+        "💵 Narxi: 5.00$\n"
+        "⚖️ Hajmi: 250g\n"
+        "🥄 Tarkibi: Un, kakao kukuni, tuxum, shakar, sariyog', shokolad"
+    )
+
+def baklava(update: Update, context):
+    update.message.reply_text(
+        "🍯 Baklava\n"
+        "🍰 Nomi: Baklava\n"
+        "💵 Narxi: 3.50$\n"
+        "⚖️ Hajmi: 150g\n"
+        "🥄 Tarkibi: Fillo xamir, asal, yong'oq, sariyog'"
+    )
+
+def medovik(update: Update, context):
+    update.message.reply_text(
+        "🍯 Medovik (Asalli tort)\n"
+        "🍰 Nomi: Medovik\n"
+        "💵 Narxi: 4.00$\n"
+        "⚖️ Hajmi: 200g\n"
+        "🥄 Tarkibi: Asal, un, shakar, tuxum, smetana"
+    )
+
+def napalyon(update: Update, context):
+    update.message.reply_text(
+        "🥐 Napoleon\n"
+        "🍰 Nomi: Napoleon\n"
+        "💵 Narxi: 4.50$\n"
+        "⚖️ Hajmi: 200g\n"
+        "🥄 Tarkibi: Puff xamiri, krem, sariyog', shakar"
+    )
+
+def apple_pie(update: Update, context):
+    update.message.reply_text(
+        "🍎 Olma pirogi\n"
+        "🍰 Nomi: Olma pirogi\n"
+        "💵 Narxi: 3.00$\n"
+        "⚖️ Hajmi: 180g\n"
+        "🥄 Tarkibi: Olmalar, un, sariyog', shakar, darçin"
+    )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
    
 
 TOKEN = os.environ['TOKEN']
@@ -65,6 +139,33 @@ TOKEN = os.environ['TOKEN']
 updater = Updater(token=TOKEN)
 
 dispatcher = updater.dispatcher
+dispatcher.add_handler(MessageHandler(Filters.text('🍫 CHOCOLATE CAKE'), chocolate))
+dispatcher.add_handler(MessageHandler(Filters.text('🍯 BAKLAVA'), baklava))
+dispatcher.add_handler(MessageHandler(Filters.text('🍯 MEDOVIK'), medovik))
+dispatcher.add_handler(MessageHandler(Filters.text('🥐 NAPALYON'), napalyon))
+dispatcher.add_handler(MessageHandler(Filters.text('🍎 APPLE PIE'), apple_pie))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def plov(update: Update, context):
     update.message.reply_text("""
     PLOV 🍚
@@ -204,11 +305,14 @@ def piva(update: Update, context):
 
 
 
+
+
 # add handlers here
 dispatcher.add_handler(MessageHandler(Filters.command('start'), start))
 dispatcher.add_handler(MessageHandler(Filters.text('YAXNA ICHIMLIKLAR 🥤'), ichimliklar))
 dispatcher.add_handler(MessageHandler(Filters.text('MILLIY TAOMLAR 🍽️'), milliy_taomlar))
 dispatcher.add_handler(MessageHandler(Filters.text('ALKOGOL MAXSULOTLARI 🍷'), aroq))
+dispatcher.add_handler(MessageHandler(Filters.text('DESERT'), desert))
 
 
 
