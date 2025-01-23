@@ -7,7 +7,8 @@ def start(update: Update, context):
      keyboard = [
     ['MILLIY TAOMLAR 🍽️', 'YAXNA ICHIMLIKLAR 🥤'],
     ['ALKOGOL MAXSULOTLARI 🍷'],
-    ['DESERT']
+    ['DESERT'],
+    ['/start'],
 ]
     
   
@@ -23,6 +24,7 @@ def milliy_taomlar(update: Update, context):
     keyboard = [
     ['PLOV 🍚', 'SHASHLIK 🍢'],
     ['MANTI 🥟', 'SHURBO 🍲'],
+     ['orqaga qaytish'],
 ]
 
     reply_markup = ReplyKeyboardMarkup(keyboard)
@@ -36,6 +38,7 @@ def ichimliklar(update: Update, context):
     ['ISSIQINA CHOY 🍵 & HOT WATER 💧'],
     ['MOXITO 🍹', 'PEPSI 🥤'],
     ['COCA COLA 🥤', 'FANTA 🥤'],
+     ['orqaga qaytish'],
 ]
     reply_markup = ReplyKeyboardMarkup(keyboard)
     
@@ -47,7 +50,8 @@ def aroq(update: Update, context):
     keyboard = [
     ['VODKA 🍸', 'VINO 🍷'],
     ['VISKIY 🥃', 'KONYAK 🥃'],
-    ['PIVA 🍺']
+    ['PIVA 🍺'],
+     ['orqaga qaytish'],
 ]
     reply_markup = ReplyKeyboardMarkup(keyboard)
     
@@ -66,6 +70,7 @@ def desert(update: Update, context):
         ['🍫 CHOCOLATE CAKE'],
         ['🍯 BAKLAVA', '🍯 MEDOVIK'],
         ['🥐 NAPALYON', '🍎 APPLE PIE'],
+         ['/start'],
     ]
     reply_markup = ReplyKeyboardMarkup(keyboard)
     
@@ -134,7 +139,7 @@ def apple_pie(update: Update, context):
 
    
 
-TOKEN = os.environ['TOKEN']
+TOKEN = '7802276361:AAGE1aQOCt5WYlLhlID4nc5aaDEuPpsP2-g'
 
 updater = Updater(token=TOKEN)
 
@@ -144,7 +149,7 @@ dispatcher.add_handler(MessageHandler(Filters.text('🍯 BAKLAVA'), baklava))
 dispatcher.add_handler(MessageHandler(Filters.text('🍯 MEDOVIK'), medovik))
 dispatcher.add_handler(MessageHandler(Filters.text('🥐 NAPALYON'), napalyon))
 dispatcher.add_handler(MessageHandler(Filters.text('🍎 APPLE PIE'), apple_pie))
-
+dispatcher.add_handler(MessageHandler(Filters.text('orqaga qaytish'), start))
 
 
 
@@ -314,7 +319,7 @@ dispatcher.add_handler(MessageHandler(Filters.text('MILLIY TAOMLAR 🍽️'), mi
 dispatcher.add_handler(MessageHandler(Filters.text('ALKOGOL MAXSULOTLARI 🍷'), aroq))
 dispatcher.add_handler(MessageHandler(Filters.text('DESERT'), desert))
 
-
+dispatcher.add_handler(MessageHandler(Filters.text('ISSIQINA CHOY 🍵 & HOT WATER 💧'),hot_water ))
 
 
 
